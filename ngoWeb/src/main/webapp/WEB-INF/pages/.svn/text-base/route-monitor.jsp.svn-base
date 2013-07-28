@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Camel Route Monitor</title>
+
+<style>
+td {
+	font-size: 10px;
+}
+
+th {
+	font-size: 14px;
+}
+
+input {
+	font-size: 11px;
+}
+</style>
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+<link href="../assets/css/bootstrap-responsive.min.css" rel="stylesheet"
+	type="text/css" />
+
+<link href="../assets/css/font-awesome.css" rel="stylesheet"
+	type="text/css" />
+<link
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+	rel="stylesheet">
+
+<link href="../assets/css/base-admin.css" rel="stylesheet"
+	type="text/css" />
+<link href="../assets/css/base-admin-responsive.css" rel="stylesheet"
+	type="text/css" />
+
+<link href="../assets/css/layout.css" rel="stylesheet" type="text/css" />
+
+
+
+</head>
+<body class="home">
+
+
+
+	<script src="../assets/js/JMX/jquery.min.js"></script>
+	<script src="../assets/js/base.js"></script>
+	<script src="../assets/js/bootdoc.js"></script>
+	<script src="../assets/js/bootstrap-datepicker.js"></script>
+	<script src="../assets/js/bootstrap-tooltip.js"></script>
+	<script src="../assets/js/bootstrap.js"></script>
+
+
+	<script src="../assets/js/bootstrap.min.js"></script>
+
+	<script src="../assets/js/js1.6/bootstrap.min.js"></script>
+
+	<script src="../assets/js/JMX/jolokia-min.js"></script>
+	<script src="../assets/js/JMX/jolokia-simple-min.js"></script>
+	<script src="../assets/js/JMX/json2.js"></script>
+
+
+
+	<div id="container">
+		<header id="page-header">
+			<nav id="main-navigation">
+				<ul>
+					<li><a href="route-monitor.html">Routes</a></li>
+				</ul>
+			</nav>
+		</header>
+		<article id="page-content">
+			<section id="item-list">
+				<table class="itemlist">
+					<thead>
+						<tr>
+							<th>Context</th>
+							<th>Route</th>
+							<th>State</th>
+							<th>Completed</th>
+							<th>Failed</th>
+							<th>Load</th>
+							<th>Monitor</th>
+							<th>Last Transaction ID</th>
+						</tr>
+					</thead>
+					<tbody id="itemsTableBody" />
+				</table>
+			</section>
+
+			<section id="item-monitor" />
+
+		</article>
+	</div>
+
+
+
+		<!-- Required ? -->
+
+		<script id="source" type="text/javascript">
+			var j4p = new Jolokia({
+				url : "http://localhost:8778/jolokia"
+			});
+			var monitorCheckBox = new Array();
+			var routeMBeans = new Array();
+			var plotFlag = false;
+			var jobs = [];
+
+			// Job handling in order to fix problem with Jolokia job handles
+
+			function addJob(jobName, handle) {
+				jobs[jobName] = handle;
+			}
+
+			function removeJob(jobName) {
+				var handle = jobs[jobName];
+				if (handle != null) {
+					for (job in jobs) {
+						if (jobs[job] != null)
+							if (jobs[job] > handle)
+								jobs[job] = jobs[job] - 1;
+					}
+					j4p.unregister(handle);
+					jobs[jobName] = null;
+				}
+			}
+			// End of job handling fix	
+
+			function findRoutes() {
+				alert('finding routes');
+				var routeList = j4p.search("org.apache.camel:type=routes,*");
+
+				var req = {
+					type : "read",
+					attribute : [ "CamelId", "RouteId", "ExchangesCompleted",
+							"ExchangesFailed", "MeanProcessingTime", "State",
+							"LastExchangeCompletedExchangeId" ]
+				};
+				for (r in routeList) {
+					req.mbean = routeList[r];
+					var response = (j4p.request(req));
+					var sample = response.value;
+					alert(sample);
+					alert(sample.RouteId);
+					var rmb = [];
+					rmb.sample = sample;
+					rmb.routeId = sample.RouteId;
+					rmb.state = document.createElement('input');
+					rmb.state.type = "button";
+					rmb.state.value = sample.State;
+					rmb.state.rmb = rmb;
+					rmb.state.onclick = new Function("stateButtonClick(this);");
+					rmb.checkBox = document.createElement('input');
+					rmb.checkBox.type = "checkbox";
+					rmb.checkBox.name = rmb.routeId;
+					rmb.checkBox.onclick = new Function(
+							"monitorCheckBoxClick(this);");
+					rmb.dataSet = [];
+					rmb.dataSet.push([ response.timestamp * 1000,
+							sample.ExchangesCompleted ]);
+					rmb.mbeanId = req.mbean;
+					routeMBeans[rmb.routeId] = rmb;
+				}
+			}
+
+			function stateButtonClick(button) {
+				var newState;
+				var rmb = button.rmb;
+				if (button.value == "Started") {
+					j4p.execute(rmb.mbeanId, "suspend()");
+				} else if (button.value == "Suspended") {
+					j4p.execute(rmb.mbeanId, "resume");
+				}
+				rmb.state.value = j4p.getAttribute(rmb.mbeanId, "State");
+			}
+
+			function monitorCheckBoxClick(checkbox) {
+				if (checkbox.checked)
+					monitorAdd(checkbox.name);
+				else
+					monitorRemove(checkbox.name);
+			}
+
+			function monitorAdd(routeId) {
+				var rmb = routeMBeans[routeId];
+				var req = {
+					type : "read",
+					attribute : [ "CamelId", "RouteId", "ExchangesCompleted",
+							"ExchangesFailed", "MeanProcessingTime", "State",
+							"LastExchangeCompletedExchangeId" ]
+				};
+				req.mbean = rmb.mbeanId;
+				addJob(routeId, j4p.register(function(response) {
+					registeredSample(rmb, response);
+				}, req));
+			}
+
+			function monitorRemove(routeId) {
+				removeJob(routeId);
+			}
+
+			function registeredSample(rmb, response) {
+				var sample = response.value;
+				rmb.dataSet.push([ response.timestamp * 1000,
+						sample.ExchangesCompleted ]);
+				rmb.sample = sample;
+				routeMBeans[rmb.routeId] = rmb;
+				updateRouteTable(rmb);
+				plotFlag = true;
+			}
+
+			function updateRouteTable(rmb) {
+				$('#row-' + rmb.routeId).replaceWith(routeRow(rmb));
+			}
+
+			function updatePlot() {
+				if (plotFlag) {
+					var plotdata = [];
+					for (routeId in routeMBeans) {
+						var rmb = routeMBeans[routeId];
+						if (rmb.checkBox.checked)
+							plotdata.push({
+								label : rmb.routeId,
+								data : rmb.dataSet
+							});
+					}
+					$.plot($("#item-monitor"), plotdata, {
+						xaxis : {
+							mode : "time"
+						},
+						yaxis : {
+							min : 0
+						},
+						grid : {
+							backgroundColor : {
+								colors : [ "#fff", "#eee" ]
+							}
+						}
+					});
+				}
+				plotFlag = false;
+				setTimeout(updatePlot, 1000);
+			}
+
+			function routeRow(rmb) {
+				var row = $('<tr>').attr('id', "row-" + rmb.routeId);
+				row.append($('<td>').append(rmb.sample.CamelId));
+				row.append($('<td>').append(rmb.sample.RouteId));
+				row.append($('<td>').append(rmb.state));
+				row.append($('<td>').append(rmb.sample.ExchangesCompleted));
+				row.append($('<td>').append(rmb.sample.ExchangesFailed));
+				row.append($('<td>').append(rmb.sample.MeanProcessingTime));
+				row.append($('<td>').append(rmb.checkBox));
+				row.append($('<td>').append(rmb.checkBox));
+				row.append($('<td>').append(
+						rmb.sample.LastExchangeCompletedExchangeId));
+
+				return row;
+			}
+
+			function fillRouteTable() {
+				var tbody = $('<tbody>');
+
+				for (route in routeMBeans) {
+					tbody.append(routeRow(routeMBeans[route]));
+				}
+				$('#itemsTableBody').replaceWith(tbody);
+			}
+
+			 $(function() {
+				alert('calling all child function');
+				findRoutes();
+				fillRouteTable();
+				j4p.start(1000);
+				updatePlot();
+			});
+
+			/* $(document)
+					.ready(
+							function() {
+								alert("in document.ready");
+								$(function() {
+									alert('------------- TRYING TO CALL ROUTES ----------------');
+									findRoutes();
+									alert("after call");
+									fillRouteTable();
+									j4p.start(1000);
+									updatePlot();
+								});
+
+							}); */
+		</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd	
+	 http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+	  http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+
+	<!-- <bean id="jms" class="org.apache.camel.component.jms.JmsComponent"> 
+		<property name="connectionFactory"> <bean class="org.apache.activemq.ActiveMQConnectionFactory"> 
+		<property name="brokerURL" value="tcp://localhost:61616" /> </bean> </property> 
+		</bean> -->
+	<camel:camelContext id="JMX-CAMEL" trace="false">
+		<camel:contextScan />
+
+
+		<!-- <camel:endpoint id="getListOfQueues" uri="bean:com.evolvus.flux.integrator.dao.impl.QMasterDaoImpl?method=findByActive" 
+			/> -->
+
+
+		<!-- <camel:route> <camel:from uri="file:/home/shabby/TECH_TEST_FOLDERS/CAMEL_ONE/inbox" 
+			/> <camel:process ref="readMailProcessor" /> <camel:to uri="file:/home/shabby/TECH_TEST_FOLDERS/CAMEL_ONE/outbox" 
+			/> </camel:route> -->
+
+		<!-- <camel:route> <camel:from uri="timer://foo?fixedRate=true&amp;period=6000" 
+			/> <camel:process ref="readMailProcessor" /> </camel:route> -->
+		<!-- <camel:route> <camel:from uri="pop3://jocnud@gmail.com?password=27thsep2006" 
+			/> <camel:process ref="readMailProcessor" /> </camel:route> -->
+
+
+
+
+
+		<camel:endpoint id="getPendingEmail" uri="jpa://com.ngo.domain.Email?consumeDelete=false consumer.query=select 
+			e from com.ngo.domain.Email e where e.emailStatus = 'PTS'" />
+			
+			
+		<!-- jpa://org.apache.camel.examples.MultiSteps?consumer.query =select 
+			o from org.apache.camel.examples.MultiSteps o where o.step = 1 -->
+
+
+		<camel:route>
+			<camel:from ref="getPendingEmail"></camel:from>
+			<camel:process ref="sendMail"></camel:process>
+		</camel:route>
+
+
+		<!-- <camel:route> <camel:from uri="timer://foo?fixedRate=true&amp;period=6000" 
+			/> <camel:process ref="sendMail" /> </camel:route> -->
+	</camel:camelContext>
+
+	<bean id="sendMail" class="com.ngo.processor.EmailProcessor" />
+
+
+</beans>

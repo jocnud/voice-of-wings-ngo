@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/config
+END
+webmvc-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/config/webmvc-config.xml
+END
+application-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/source-repository/flux/!svn/ver/148/trunk/mockupWeb/src/main/webapp/WEB-INF/config/application-config.xml
+END
+database-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/config/database-config.xml
+END
+common-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/source-repository/flux/!svn/ver/148/trunk/mockupWeb/src/main/webapp/WEB-INF/config/common-config.xml
+END

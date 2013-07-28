@@ -1,0 +1,13 @@
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>	
+	<div class="row-fluid">
+		<div class="span8" id="work-area">
+			<tiles:insertAttribute name="work-area-template" />
+		</div>
+		<div class="span3" id="context-area">
+			<tiles:insertAttribute name="context-area-template" />
+		</div>		
+	</div>
+
+	<script> 
+      window.history.forward(1);
+</script> 		

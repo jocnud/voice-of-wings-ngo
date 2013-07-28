@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages
+END
+menu-template.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/menu-template.jsp
+END
+error.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/error.jsp
+END
+main-queue-area-template.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/main-queue-area-template.jsp
+END
+demo-dashboard.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/source-repository/flux/!svn/ver/148/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/demo-dashboard.jsp
+END
+header.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/header.jsp
+END
+custom-footer-template.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/custom-footer-template.jsp
+END
+camelMonitorDashboard.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/source-repository/flux/!svn/ver/148/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/camelMonitorDashboard.jsp
+END
+standard-queue-workbench-template.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/standard-queue-workbench-template.jsp
+END
+header-dashboard.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/header-dashboard.jsp
+END
+500.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/500.jsp
+END
+route-monitor.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/source-repository/flux/!svn/ver/148/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/route-monitor.jsp
+END
+403.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/403.jsp
+END
+standard-workbench-template.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/standard-workbench-template.jsp
+END
+footer.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/footer.jsp
+END
+home.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/home.jsp
+END
+footer-dashboard.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/footer-dashboard.jsp
+END
+main-area-template.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/WEB-INF/pages/main-area-template.jsp
+END

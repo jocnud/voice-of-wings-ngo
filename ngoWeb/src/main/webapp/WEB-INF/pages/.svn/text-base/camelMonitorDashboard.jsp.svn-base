@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Camel Route Monitor</title>
+
+<style>
+td {
+	font-size: 10px;
+}
+
+th {
+	font-size: 14px;
+}
+
+input {
+	font-size: 11px;
+}
+</style>
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+<link href="../assets/css/bootstrap-responsive.min.css" rel="stylesheet"
+	type="text/css" />
+
+<link href="../assets/css/font-awesome.css" rel="stylesheet"
+	type="text/css" />
+<link
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+	rel="stylesheet">
+
+<link href="../assets/css/base-admin.css" rel="stylesheet"
+	type="text/css" />
+<link href="../assets/css/base-admin-responsive.css" rel="stylesheet"
+	type="text/css" />
+
+<link href="../assets/css/layout.css" rel="stylesheet" type="text/css" />
+
+
+
+</head>
+<body>
+
+
+
+	<script src="../assets/js/JMX/jquery.min.js"></script>
+	<script src="../assets/js/base.js"></script>
+	<script src="../assets/js/bootstrap-datepicker.js"></script>
+	<script src="../assets/js/bootstrap-tooltip.js"></script>
+	<script src="../assets/js/bootstrap.js"></script>
+
+
+	<script src="../assets/js/bootstrap.min.js"></script>
+
+	<script src="../assets/js/js1.6/bootstrap.min.js"></script>
+
+	<script src="../assets/js/JMX/jolokia-min.js"></script>
+	<script src="../assets/js/JMX/jolokia-simple-min.js"></script>
+	<script src="../assets/js/JMX/json2.js"></script>
+
+
+	<br />
+	<br />
+	<br />
+
+	<div class="row">
+		<div class="span4" id="menu"></div>
+
+		<div class="span8">
+			<div class="widget-content">
+				<table id="monitorTable" class="table table-striped table-bordered">
+
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Required ? -->
+
+	<script id="source" type="text/javascript">
+		var j4p = new Jolokia({
+			url : "http://localhost:8778/jolokia"
+		});
+
+		/* ------------------- THIS IS JUST TO TEST THE CUSTOMISE FUNCTION  -------------------------- */
+
+		function findAllRoutes() {
+
+			var routeList = j4p.search("org.apache.camel:type=routes,*");
+			var req = {
+				type : "read",
+				attribute : [ "CamelId", "RouteId", "ExchangesCompleted",
+						"ExchangesFailed", "MeanProcessingTime", "State",
+						"LastExchangeCompletedExchangeId" ]
+			};
+			for (r in routeList) {
+				req.mbean = routeList[r];
+				var response = (j4p.request(req));
+				var singleRoute = response.value;
+				var routeId = singleRoute.RouteId;
+				var contextId = singleRoute.CamelId;
+				display(routeId, contextId);
+			}
+		}
+		var r;
+		function display(routeId, contextId) {
+
+			this.r=routeId;
+			alert(r);
+			/* $('#menu')
+			
+				.append(
+						'<div id="channel" class="span3"><i class="icon-th-large"/> '
+								+ contextId
+								+ '</div>'
+								+ '<div id="route" class="span4 pull-right">'
+								+ 'Route : '
+								+ routeId + '</div>'
+												
+				);  */
+
+			var divElementChannel = document.createElement("div");
+
+			divElementChannel.id = "channel";
+			divElementChannel.className = "span3";
+			divElementChannel.innerHTML = contextId;
+			document.getElementById('menu').appendChild(divElementChannel);
+			
+
+			var divElementRoute = document.createElement("div");
+
+			divElementRoute.id = "route";
+			divElementRoute.className = "span3";
+			divElementRoute.setAttribute("onclick", "displayRouteDetails(this.r)");
+
+			//  element7.setAttribute("onclick", "deleteRow('table'," + rowCount + ")");
+			
+			divElementRoute.innerHTML = routeId;
+			document.getElementById('menu').appendChild(divElementRoute);
+
+		}
+		/* 	var divElement = document.createElement("div");
+			divElement.id = "channel";
+			divElement.className = "span3";
+			divElement.innerHTML = "sdfsfdf";
+			document.body.appendChild("menu");
+
+		} */
+
+		function displayRouteDetails(routeId) {
+			alert(routeId);
+		}
+
+		/*---------------------------------------------------------------------------------------------------------------*/
+
+		$(document).ready(function() {
+
+			findAllRoutes();
+			/* $(function() {
+				alert('------------- TRYING TO CALL ROUTES ----------------');
+				findRoutes();
+				alert("after call");
+				fillRouteTable();
+				j4p.start(1000);
+				updatePlot();
+			}); */
+
+		});
+	</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page session="false"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title></title>
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+<link href="../assets/css/bootstrap-responsive.min.css" rel="stylesheet"
+	type="text/css" />
+
+<link href="../assets/css/font-awesome.css" rel="stylesheet"
+	type="text/css" />
+<link
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+	rel="stylesheet">
+
+<link href="../assets/css/base-admin.css" rel="stylesheet"
+	type="text/css" />
+<link href="../assets/css/base-admin-responsive.css" rel="stylesheet"
+	type="text/css" />
+
+
+<script src="../assets/js/JMX/jquery.min.js"></script>
+
+</head>
+
+
+<body>
+
+
+
+
+
+	<a href="${pageContext.request.contextPath}/demo/camelMonitorDashboard">
+		CAMEL MONITOR </a>
+
+
+	<h2>Dumy App for reading from Queue through JAVA DSL</h2>
+	<i class="icon-home"></i>
+
+	<br />
+	<c:url var="start" value="/demo/submit?action=start" />
+	<c:url var="stop" value="/demo/submit?action=stop" />
+	<c:url var="stopR1" value="/demo/submit?action=stopR1" />
+	<c:url var="stopR2" value="/demo/submit?action=stopR2" />
+
+
+	<form:form id="demo-dashboard-id" modelAttribute="demoFormBean"
+		name="demo-dashboard-id" action="">
+
+		<table cellspacing="5px" cellpadding="5px">
+			<tr>
+				<td colspan="6">Start Camel to read from the ActiveMQ</td>
+			</tr>
+
+			<tr>
+				<td colspan="3"><button type="submit" id="start"
+						onclick="return setValue('start');">Start Camel</button></td>
+				<td colspan="3"><button type="submit" id="stop"
+						onclick="return setValue('stop');">Stop Camel</button></td>
+
+			</tr>
+
+			<tr>
+				<td colspan="3"><button type="submit" id="stopR1"
+						onclick="return setValue('stopR1');">Stop Route from
+						Incoming Queue</button></td>
+				<td colspan="3"><button type="submit" id="stopR2"
+						onclick="return setValue('stopR1');">Stop Route from Test
+						Queue</button></td>
+
+			</tr>
+
+		</table>
+	</form:form>
+
+
+
+
+
+
+
+
+	<!--  FOR CONTROLLER  -->
+
+	<script type="text/javascript">
+		var action = "";
+		var url = "";
+		$(document).ready(function() {
+			alert('entered jquery');
+
+			$('#demo-dashboard-id').on('submit', function(e) {
+				if (action == 'start') {
+					url = '${start}';
+					alert(url);
+				} else if (action == 'stopR1') {
+					url = '${stopR1}';
+				} else if (action == 'stopR2') {
+					url = '${stopR2}';
+				} else {
+					url = '${stop}';
+				}
+				e.preventDefault();
+				$('#demo-dashboard-id').attr('action', url); //give it the action url ); 
+				$('#demo-dashboard-id').unbind('submit').submit(); //submit it...
+			});
+		});
+		function setValue(newValue) {
+			action = newValue;
+			alert('action');
+		}
+	</script>
+
+
+
+
+
+</body>
+</html>

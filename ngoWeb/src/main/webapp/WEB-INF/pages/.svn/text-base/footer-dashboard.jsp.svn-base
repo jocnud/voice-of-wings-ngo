@@ -1,0 +1,32 @@
+<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+					&copy; 2013 <a href="<s:message code="evolvus.url"/>"><s:message
+							code="evolvus.title" /></a>.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /footer -->
+
+<script src="${pageContext.request.contextPath}/assets/js/jquery-1.7.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.jqplot.min.js" class="include"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jqplot.donutRenderer.min.js" class="include"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jqplot.pieRenderer.min.js" class="include"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jqplot.barRenderer.min.js" class="include"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jqplot.categoryAxisRenderer.min.js"
+	class="include"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jqplot.pointLabels.min.js" class="include"></script>
+<script src="${pageContext.request.contextPath}/assets/js/autoNumeric-1.7.5.js"></script>
+<script> 
+     $j = jQuery.noConflict(); 
+</script> 
+
+</body>
+</html>

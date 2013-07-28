@@ -1,0 +1,34 @@
+10
+
+dir
+86
+http://codeserver/source-repository/flux/trunk/mockupWeb/src/main/webapp/assets/docs/assets
+http://codeserver/source-repository/flux
+
+
+
+2013-06-04T07:44:17.595507Z
+86
+priyaa
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+67a7c6b6-c2ca-46e7-b100-9e3dbcb0ba1e
+
+blueprint-css
+dir
+
+images
+dir
+

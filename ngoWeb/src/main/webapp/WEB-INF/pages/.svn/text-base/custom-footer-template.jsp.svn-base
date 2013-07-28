@@ -1,0 +1,46 @@
+<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<div class="span3">
+	<h4>
+		<s:message code="custom.menu.group.one.title" />
+	</h4>
+	<ul>
+		<li><a href="<s:message code="custom.menu.group.one.link.one.url"/>"><s:message
+									code="custom.menu.group.one.link.one.title" /></a></li>
+		<li><a href="<s:message code="custom.menu.group.one.link.two.url"/>"><s:message
+									code="custom.menu.group.one.link.two.title" /></a></li>
+		<li><a href="<s:message code="custom.menu.group.one.link.three.url"/>"><s:message
+									code="custom.menu.group.one.link.three.title" /></a></li>
+		<li><a href="<s:message code="custom.menu.group.one.link.four.url"/>"><s:message
+									code="custom.menu.group.one.link.four.title" /></a></li>
+	</ul>
+</div>
+<div class="span3">
+	<h4>
+		<s:message code="custom.menu.group.two.title" />
+	</h4>
+	<ul>
+		<li><a href="<s:message code="custom.menu.group.two.link.one.url"/>"><s:message
+									code="custom.menu.group.two.link.one.title" /></a></li>
+		<li><a href="<s:message code="custom.menu.group.two.link.two.url"/>"><s:message
+									code="custom.menu.group.two.link.two.title" /></a></li>
+		<li><a href="<s:message code="custom.menu.group.two.link.three.url"/>"><s:message
+									code="custom.menu.group.two.link.three.title" /></a></li>
+		<li><a href="<s:message code="custom.menu.group.two.link.four.url"/>"><s:message
+									code="custom.menu.group.two.link.four.title" /></a></li>
+	</ul>
+</div>
+<div class="span3">
+	<h4>
+		<s:message code="custom.menu.group.three.title" />
+	</h4>
+	<ul>
+		<li><a href="<s:message code="custom.menu.group.three.link.one.url"/>"><s:message
+									code="custom.menu.group.three.link.one.title" /></a></li>
+		<li><a href="<s:message code="custom.menu.group.three.link.two.url"/>"><s:message
+									code="custom.menu.group.three.link.two.title" /></a></li>
+		<li><a href="<s:message code="custom.menu.group.three.link.three.url"/>"><s:message
+									code="custom.menu.group.three.link.three.title" /></a></li>
+		<li><a href="<s:message code="custom.menu.group.three.link.four.url"/>"><s:message
+									code="custom.menu.group.three.link.four.title" /></a></li>
+	</ul>
+</div>

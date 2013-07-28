@@ -1,0 +1,147 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>i-Recruit, Alp Consulting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Anish" >
+
+    <!-- Le styles -->
+    <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="<c:url value="/resources/css/bootstrap-responsive.css" />" rel="stylesheet" type="text/css"/>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="<c:url value="/resources/ico/favicon.ico" />"  />
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">    	
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.html"><img src="<c:url value="/resources/ico/glyphicons_043_group.png"/>" /> I-Recruit</a>
+          <div class="nav-collapse">            
+            <ul class="nav pull-right">
+                <form class="navbar-form" action="home.html">
+                  <input type="text" class="text span2" placeholder="Email">
+                  <input type="password" class="text span2" placeholder="Password">
+                  <button type="submit" class="btn btn-success">Sign in <strong>&raquo;</strong></button>
+                  <a href="forgotpassword.html" class="btn btn-info">Forgot Password?</a>                  
+                </form>
+            </ul>
+           </div>  <!--/.nav-collapse -->
+          </div> <!-- container -->          
+        </div> <!-- navbar inner -->
+      </div> <!-- navbar -->
+    
+
+    <div class="container">
+                         
+    		<div class="row-fluid">
+    			<div class="span6">
+    				<img src="<c:url value="/resources/img/our-people-recruiters-at-5-elements-rpo.jpg"/>" />
+    			</div>
+    			<div class="span6">
+    				<br/>
+               <h1>New to I-Recruit?</h1>
+               <p> <a class="btn btn-large btn-success" href="register.html">Register here &raquo;</a></p>
+               <br/>					
+					<h2><a href="#">Jobs in the last 5 days &raquo;</a></h2>
+               <div id="myCarousel" class="carousel">            
+               <div class="carousel-inner">
+               <div class="active item">
+    	             <div class="well">
+    		          <h2><a href="#">IBM-H1002</a></h2>
+                   <p><small><strong>Client: </strong></small><small>IBM Global Services</small>,<small>Hyderabad</small></p>
+                   <p><small>java, ejb, websphere</small></p>          
+                   <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>          
+                   <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
+    	             </div>
+               </div>
+               <div class="item">
+                   <div class="well">
+                   <h2>Heading</h2>
+                   <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                   <p><a class="btn" href="#">View details &raquo;</a></p>
+                   </div>
+               </div>
+               <div class="item">
+                   <div class="well">
+                   <h2>Heading</h2>
+                   <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                   <p><a class="btn" href="#">View details &raquo;</a></p>
+                   </div>            
+               </div>
+               </div>
+               <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+               <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>				
+    			   </div>
+    		  </div>      
+         </div>
+      <footer>
+    
+      </footer>
+
+    </div> <!-- /container -->
+    
+    <div class="navbar navbar-fixed-bottom">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="http://www.alpconsulting.in"> &copy; Alp Consulting, 2012</a></li>
+              <li><a href="http://twitter.com/alpconsulting"><i class="icon-retweet icon-white"></i> Tweet</a></li>
+              <li><a href="http://twitter.com/alpconsulting"><i class="icon-pencil icon-white"></i> Blog</a></li>
+              <li><a href="http://twitter.com/alpconsulting"><i class="icon-resize-full icon-white"></i> LinkedIn</a></li>
+            </ul>
+            <ul class="nav pull-right">
+               <li><a href="http://www.evolvussolutions.com">Developed by Evolvus Solutions Pvt. Ltd.</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="<c:url value="/resources/js/jquery.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap-transition.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap-alert.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap-modal.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap-dropdown.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap-scrollspy.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap-tab.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap-tooltip.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap-popover.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap-button.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap-collapse.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap-carousel.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap-typeahead.js" />"></script>
+
+  </body>
+</html>

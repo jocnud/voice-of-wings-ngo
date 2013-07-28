@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/assets/js/charts
+END
+line.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/assets/js/charts/line.js
+END
+bar.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/assets/js/charts/bar.js
+END
+donut.js
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/assets/js/charts/donut.js
+END
+area.js
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/assets/js/charts/area.js
+END
+pie.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/source-repository/flux/!svn/ver/86/trunk/mockupWeb/src/main/webapp/assets/js/charts/pie.js
+END

@@ -1,0 +1,68 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ page session="false" %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><s:message code="server.error.title"/></title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+	    
+	<link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	
+	<link href="/assets/css/font-awesome.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+	    
+	<link href="/assets/css/base-admin.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/css/base-admin-responsive.css"  rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>	
+
+<div class="container">
+	
+	<div class="row">
+		
+		<div class="span12">
+			
+			<div class="error-container">
+				<h1><s:message code="error.exclamation"/></h1>
+				
+				<h2><s:message code="server.error.header"/></h2>
+				
+				<div class="error-details">
+					<s:message code="server.error.details"/>
+				</div> <!-- /error-details -->
+				
+				<div class="error-actions">
+					<a href="./" class="btn btn-large btn-primary">
+						<i class="icon-chevron-left"></i>
+						&nbsp;
+						<s:message code="back.to.dashboard"/>						
+					</a>
+					<!-- Need to pass the ${pageContext.errorData.throwable} object to the mail -->
+					<a href="./" class="btn btn-large">
+						<i class="icon-envelope"></i>
+						&nbsp;
+						<s:message code="contact.support"/>						
+					</a>					
+				</div> <!-- /error-actions -->
+							
+			</div> <!-- /error-container -->			
+			
+		</div> <!-- /span12 -->
+		
+	</div> <!-- /row -->
+	
+</div> <!-- /container -->
+
+
+<script src="/assets/js/jquery-1.7.2.min.js"></script>
+<script src="/assets/js/bootstrap.js"></script>
+
+</body>
+</html>

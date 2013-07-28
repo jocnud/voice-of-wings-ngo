@@ -1,0 +1,7 @@
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<div class="row-fluid">
+	<div style="width:950px;" id="work-area">
+		<tiles:insertAttribute name="work-area-template" />
+	</div>
+</div>
+

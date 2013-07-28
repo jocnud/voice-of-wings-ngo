@@ -1,0 +1,29 @@
+<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+					&copy; 2013 <a href="<s:message code="evolvus.url"/>"><s:message
+							code="evolvus.title" /></a>.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- /footer -->
+<!-- Introduce DDoc settings required by JavaScript -->
+<script type="text/javascript">
+	var Title = 'Phobos Runtime Library';
+	var SourceRepository = 'https://github.com/D-Programming-Language/phobos/tree/master';
+	var PackageSeparator = '.';
+</script>
+
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js" ></script>
+<script src="${pageContext.request.contextPath}/assets/js/base.js" ></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js" ></script>
+<script src="${pageContext.request.contextPath}/assets/js/guidely/guidely.min.js" ></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootdoc.js" ></script>
+</body>
+</html>
