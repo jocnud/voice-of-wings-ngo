@@ -15,10 +15,17 @@ public class EmailBean implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1994929136334359093L;
-	
+	/**
+	 * Receiver Email Address
+	 */
 	private String toAddr;
-	
+	/**
+	 * Email Subject
+	 */
 	private String subject;
+	/**
+	 * Email body
+	 */
 	
 	private String body;
 
