@@ -37,7 +37,7 @@ public class EmailProcessor implements Processor {
 		Session session = Session.getDefaultInstance(props,
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication("shahbaz.khan1003@gmail.com",
+						return new PasswordAuthentication("ngoweb@gmail.com",
 								"qaws12qaws");
 					}
 				});
